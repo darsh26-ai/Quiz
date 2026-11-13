@@ -1,1 +1,143 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#261b62">
+  <title>Family Quiz Live</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #21164e, #5943aa);
+      color: white;
+      display: grid;
+      place-items: center;
+      padding: 20px;
+    }
+
+    main {
+      max-width: 520px;
+      width: 100%;
+      background: white;
+      color: #241b50;
+      padding: 30px;
+      border-radius: 22px;
+      text-align: center;
+      box-shadow: 0 15px 45px #0003;
+    }
+
+    h1 {
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+
+    p {
+      color: #666;
+      line-height: 1.6;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 17px;
+    }
+
+    button {
+      width: 100%;
+      padding: 15px;
+      border: 0;
+      border-radius: 10px;
+      background: #6249d8;
+      color: white;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #4933b2;
+    }
+
+    .small {
+      font-size: 12px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <main>
+    <div style="font-size:55px">🏆</div>
+
+    <h1>Family Quiz Live</h1>
+
+    <p>
+      Your questions. Your family.
+      Your competition!
+    </p>
+
+    <input
+      id="pin"
+      placeholder="Enter game PIN"
+      inputmode="numeric"
+    >
+
+    <input
+      id="name"
+      placeholder="Enter your nickname"
+    >
+
+    <button onclick="joinGame()">
+      Join the quiz
+    </button>
+
+    <p id="message" role="status"></p>
+
+    <p class="small">
+      Family Quiz Live · Made for fun!
+    </p>
+  </main>
+
+  <script>
+    function joinGame() {
+
+      const pin =
+        document.getElementById('pin').value.trim();
+
+      const name =
+        document.getElementById('name').value.trim();
+
+      const message =
+        document.getElementById('message');
+
+      if (!/^\d{6}$/.test(pin)) {
+        message.textContent =
+          'Please enter a six-digit game PIN.';
+        return;
+      }
+
+      if (!name || name.length > 20) {
+        message.textContent =
+          'Please enter a nickname (up to 20 characters).';
+        return;
+      }
+
+      message.textContent =
+        'Your joining screen is ready. Multiplayer connection is coming next!';
+    }
+  </script>
+
+</body>
+</html>
